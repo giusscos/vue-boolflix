@@ -1,11 +1,11 @@
 <template>
     <main>
         <ul>
-            <li v-for="(movie, i) in movieFilter" :key="i">
-                {{ movie.title }}<br>
-                {{ movie.original_title }}<br>
-                {{ movie.original_language }}<br>
-                {{ movie.vote_average }}<br>
+            <li v-for="movie in movieFilter" :key="movie.id">
+                Titolo: {{ movie.title }}<br>
+                Titolo originale: {{ movie.original_title }}<br>
+                Lingua originale: {{ movie.original_language }}<br>
+                Voto: {{ movie.vote_average }}<br>
             </li>
         </ul>
     </main>
@@ -22,12 +22,10 @@ export default {
         listMovies(){
             return state.listMovies
         },
-        movieFilter() {
+        movieFilter(){
             return state.listMovies.filter((el) => {
                 const title = el.title.toLowerCase()
                 const find = this.searchMovie.toLowerCase()
-
-                console.log('main > ', find)
 
                 if (title.includes(find)) {
                     return true
