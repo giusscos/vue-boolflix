@@ -32,6 +32,9 @@ export default {
                     console.log(res.data.results)
                     state.listMovies = res.data.results
                 })
+                .catch((err) => {
+                    console.log(err)
+                })
 
         }
     }

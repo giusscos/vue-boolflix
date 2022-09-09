@@ -2,7 +2,7 @@ import Vue from "vue";
 
 const state = Vue.observable({
     query: '',
-    listMovies: []
+    listMovies: [],
 })
 
 export default state
