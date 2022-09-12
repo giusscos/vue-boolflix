@@ -13,9 +13,15 @@
             Poster: <img :src="tv.poster" :alt="`Poster de: ${tv.origin_title}`" />
         </p>
         <p>
-             Voto: <!-- {{ tv.vote }} -->
-             <span v-for="(star,i) in tv.vote" :key="`${i}.star`">
-                <i class="fa-solid fa-star"></i>
+            Voto:
+            <!-- {{ tv.vote }} -->
+            <span v-for="star in 5" :key="`${star}.star`">
+                <span v-if="star < tv.vote">
+                    <i class="fa-solid fa-star"></i>
+                </span>
+                <span v-else-if="star > tv.vote">
+                    <i class="fa-regular fa-star"></i>
+                </span>
             </span>
         </p>
     </li>

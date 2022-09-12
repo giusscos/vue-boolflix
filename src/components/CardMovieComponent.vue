@@ -7,15 +7,21 @@
             Titolo originale: {{ movie.origin_title }}
         </p>
         <p>
-            Lingua originale: {{ movie.lang }} <img height="20px" :src="movie.flag" alt="" /> 
+            Lingua originale: {{ movie.lang }} <img height="20px" :src="movie.flag" alt="" />
         </p>
         <p>
             Poster: <img :src="movie.poster" :alt="`Poster de: ${movie.original_title}`" />
         </p>
         <p>
-            Voto: <!-- {{ movie.vote }}  -->
-            <span v-for="(star,i) in movie.vote" :key="`${i}.star`">
-                <i class="fa-solid fa-star"></i>
+            Voto:
+            <!-- {{ movie.vote }}  -->
+            <span v-for="star in 5" :key="`${star}.star`">
+                <span v-if="star < movie.vote">
+                    <i class="fa-solid fa-star"></i>
+                </span>
+                <span v-else-if="star > tv.vote">
+                    <i class="fa-regular fa-star"></i>
+                </span>
             </span>
         </p>
     </li>
