@@ -6,28 +6,25 @@
                     Film
                 </h3>
             </li>
-            <li v-for="movie in movieFilter" :key="movie.id">
+            <li v-for="movie in movies" :key="movie.id">
                 Titolo: {{ movie.title }}<br>
-                Titolo originale: {{ movie.original_title }}<br>
-                Lingua originale >> <img height="20px"
-                    :src="`https://flagsapi.com/${movie.original_language.toUpperCase()}/flat/64.png`"
-                    :alt="`Bandiera > ${movie.original_language}`" /> <br>
-                Voto: {{ movie.vote_average }}<br>
-                Poster: <img :src="`https://image.tmdb.org/t/p/w200${movie.poster_path}`" :alt="`Poster de: ${movie.original_title}`"/>
+                Titolo originale: {{ movie.origin_title }}<br>
+                Lingua originale: {{ movie.lang }} <img height="20px" :src="movie.flag" alt="" /> <br>
+                Voto: {{ movie.vote }} <br>
+                Poster: <img :src="movie.poster" :alt="`Poster de: ${movie.original_title}`" />
             </li>
             <li>
                 <h3>
                     Serie Tv
                 </h3>
             </li>
-            <li v-for="tv in tvsFilter" :key="tv.id">
-                Nome: {{ tv.name }} <br>
-                Nome originale: {{ tv.original_name }} <br>
-                Lingua originale >> <img height="20px"
-                    :src="`https://flagsapi.com/${tv.original_language.toUpperCase()}/flat/64.png`"
-                    :alt="`Bandiera > ${tv.original_language}`" /> <br>
-                Voto: {{ tv.vote_average }}<br>
-                Poster: <img :src="`https://image.tmdb.org/t/p/w200${tv.poster_path}`" :alt="`Poster de: ${tv.original_title}`"/>
+            <li v-for="tv in tvs" :key="tv.id">
+                Nome: {{ tv.title }} <br>
+                Nome originale: {{ tv.origin_title }} <br>
+                Lingua originale: {{ tv.lang }} <img height="20px" :src="tv.flag" alt="" /> <br>
+                Voto: {{ tv.vote }} <br>
+                Poster: <img :src="tv.poster"
+                    :alt="`Poster de: ${tv.origin_title}`" />
             </li>
         </ul>
     </main>
@@ -69,6 +66,34 @@ export default {
                 }
 
                 return false
+            })
+        },
+        movies() {
+            return this.movieFilter.map((el) => {
+                const movie = {
+                    title: el.title,
+                    origin_title: el.original_title,
+                    lang: el.original_language,
+                    flag: `https://flagsapi.com/${el.original_language.toUpperCase()}/flat/64.png`,
+                    poster: `https://image.tmdb.org/t/p/w200${el.poster_path}`,
+                    vote: Math.floor(el.vote_average / 2),
+                }
+
+                return movie
+            })
+        },
+        tvs() {
+            return this.tvsFilter.map((el) => {
+                const movie = {
+                    title: el.name,
+                    origin_title: el.original_name,
+                    lang: el.original_language,
+                    flag: `https://flagsapi.com/${el.original_language.toUpperCase()}/flat/64.png`,
+                    poster: `https://image.tmdb.org/t/p/w200${el.poster_path}`,
+                    vote: Math.floor(el.vote_average / 2),
+                }
+
+                return movie
             })
         }
     },

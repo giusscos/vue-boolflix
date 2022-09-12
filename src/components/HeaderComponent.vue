@@ -19,6 +19,9 @@ export default {
     },
     methods: {
         getMovies() {
+            if(this.search.trim() === '')
+                return 
+
             state.query = this.search
 
             axios
