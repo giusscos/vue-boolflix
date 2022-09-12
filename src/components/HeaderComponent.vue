@@ -1,7 +1,14 @@
 <template>
-    <header>
-        <input type="text" placeholder="Cerca un film" v-model="search" @keyup.enter="getMovies()" />
-        <button @click="getMovies()">Cerca</button>
+    <header class="main_header">
+        <div class="logo_wrapper">
+            <h1 class="logo_title">
+                Boolflix
+            </h1>
+        </div>
+        <div class="search_wrapper">
+            <input type="text" placeholder="Cerca un film" v-model="search" @keyup.enter="getMovies()" />
+            <button @click="getMovies()">Cerca</button>
+        </div>
     </header>
 </template>
 <script>
@@ -60,5 +67,54 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.main_header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0.5rem 1rem;
 
+    background-color: #333;
+
+    .logo_wrapper{
+        .logo_title{
+            color: #c10000;
+            text-transform: uppercase;
+        }
+    }
+
+    .search_wrapper{
+        gap: 1rem;
+        display: flex;
+        margin-left: auto;
+
+        input[type="text"]{
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: 0px solid transparent;
+
+            &:focus{
+                outline: 2px solid #c10000;
+            }
+        }
+
+        button{
+            cursor: pointer;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            border: 0px solid transparent;
+
+            font-size: 1rem;
+            font-weight: bold;
+
+            &:hover{
+                color: #ddd;
+                background-color: #c10000;
+            }
+            &:focus{
+                outline: 2px solid #c10000;
+            }
+        }
+    }
+}
 </style>

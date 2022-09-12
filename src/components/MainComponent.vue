@@ -27,6 +27,12 @@ import CardTvComponent from './CardTvComponent.vue'
 
 export default {
     name: 'MainComponent',
+    data(){
+        return{
+            flag_path: 'https://flagsapi.com/',
+            poster_path: 'https://image.tmdb.org/t/p/w342',
+        }
+    },
     computed: {
         search() {
             return state.query
@@ -67,8 +73,8 @@ export default {
                     title: el.title,
                     origin_title: el.original_title,
                     lang: el.original_language,
-                    flag: `https://flagsapi.com/${el.original_language.toUpperCase()}/flat/64.png`,
-                    poster: `https://image.tmdb.org/t/p/w200${el.poster_path}`,
+                    flag: `${this.flag_path}${el.original_language.toUpperCase()}/flat/64.png`,
+                    poster: this.poster_path + el.poster_path,
                     vote: Math.floor(el.vote_average / 2),
                 }
 
@@ -81,8 +87,8 @@ export default {
                     title: el.name,
                     origin_title: el.original_name,
                     lang: el.original_language,
-                    flag: `https://flagsapi.com/${el.original_language.toUpperCase()}/flat/64.png`,
-                    poster: `https://image.tmdb.org/t/p/w200${el.poster_path}`,
+                    flag: `${this.flag_path}${el.original_language.toUpperCase()}/flat/64.png`,
+                    poster: this.poster_path + el.poster_path,
                     vote: Math.floor(el.vote_average / 2),
                 }
 
