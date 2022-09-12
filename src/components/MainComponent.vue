@@ -111,7 +111,7 @@ export default {
         color: $bf-text_white;
 
         .list_item{
-            flex-basis: calc((100% / 4) - 1rem);
+            flex-basis: calc((100% / 3) - 1rem);
         }
     }
 }
