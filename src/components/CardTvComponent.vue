@@ -6,20 +6,20 @@
         <div class="card_info">
             <h3>
                 Titolo:
-                <span>
+                <span class="card_content">
                     {{ tv.title }}
                 </span>
             </h3>
             <p>
                 Titolo originale: 
-                <span>
+                <span class="card_content">
                     {{ tv.origin_title }}
                 </span>
             </p>
             <p>
                 Lingua:
-                <span>
-                    {{ tv.lang }} <img height="20px" :src="tv.flag" alt="" />
+                <span class="card_content">
+                     <img height="20px" :src="tv.flag" :alt="`${tv.lang}`" />
                 </span>
             </p>
             <p class="card_vote">
@@ -36,7 +36,7 @@
             </p>
             <p class="card_overview">
                 Overview:
-                <span>
+                <span class="card_content">
                     {{ tv.overview}}
                 </span>
             </p>

@@ -52,8 +52,10 @@ img{
         flex-direction: column;
 
         .card_content{
-            font-weight: normal;
             font-size: 1rem;
+            font-weight: normal;
+
+            vertical-align: top;
         }
 
         .card_vote{

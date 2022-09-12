@@ -19,7 +19,7 @@
             <p>
                 Lingua: 
                 <span class="card_content">
-                    {{ movie.lang }} <img height="20px" :src="movie.flag" alt="" />
+                     <img height="20px" :src="movie.flag" :alt="`${movie.lang}`" />
                 </span>
             </p>
             <p class="card_vote">

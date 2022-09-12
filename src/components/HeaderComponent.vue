@@ -94,7 +94,7 @@ export default {
         input[type="text"] {
             font-size: 1rem;
             padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
+            border-radius: 0.25rem;
             border: 0px solid transparent;
 
             &:focus {
@@ -104,7 +104,7 @@ export default {
 
         button {
             cursor: pointer;
-            border-radius: 0.5rem;
+            border-radius: 0.25rem;
             padding: 0.5rem 1.5rem;
             border: 0px solid transparent;
 
