@@ -26,7 +26,7 @@
                 Voto:
                 <!-- {{ movie.vote }}  -->
                 <span v-for="star in 5" :key="`${star}.star`">
-                    <span class="vote_average" v-if="star < movie.vote">
+                    <span class="vote_average" v-if="star <= movie.vote">
                         <i class="fa-solid fa-star"></i>
                     </span>
                     <span class="vote" v-else-if="star > movie.vote">

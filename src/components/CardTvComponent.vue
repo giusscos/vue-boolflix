@@ -11,7 +11,7 @@
                 </span>
             </h3>
             <p>
-                Titolo originale: 
+                Titolo originale:
                 <span class="card_content">
                     {{ tv.origin_title }}
                 </span>
@@ -19,17 +19,23 @@
             <p>
                 Lingua:
                 <span class="card_content">
-                     <img height="20px" :src="tv.flag" :alt="`${tv.lang}`" />
+                    <span v-if="tv.flag">
+                        <img height="20px" :src="tv.flag.src" :alt="`${tv.lang}`" />
+                    </span>
+                    <span v-else>
+                        <img height="20px" :src="tv.flag.default" :alt="`${tv.lang}`" />
+
+                    </span>
                 </span>
             </p>
             <p class="card_vote">
                 Voto:
                 <!-- {{ tv.vote }} -->
                 <span v-for="star in 5" :key="`${star}.star`">
-                    <span v-if="star < tv.vote">
+                    <span class="vote_average" v-if="star <= tv.vote">
                         <i class="fa-solid fa-star"></i>
                     </span>
-                    <span v-else-if="star > tv.vote">
+                    <span class="vote" v-else-if="star > tv.vote">
                         <i class="fa-regular fa-star"></i>
                     </span>
                 </span>
