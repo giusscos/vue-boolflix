@@ -7,11 +7,7 @@
                 </h3>
             </li>
             <li v-for="movie in movies" :key="movie.id">
-                Titolo: {{ movie.title }}<br>
-                Titolo originale: {{ movie.origin_title }}<br>
-                Lingua originale: {{ movie.lang }} <img height="20px" :src="movie.flag" alt="" /> <br>
-                Voto: {{ movie.vote }} <br>
-                Poster: <img :src="movie.poster" :alt="`Poster de: ${movie.original_title}`" />
+                <CardMovieComponent :movie="movie"/>
             </li>
             <li>
                 <h3>
@@ -19,18 +15,15 @@
                 </h3>
             </li>
             <li v-for="tv in tvs" :key="tv.id">
-                Nome: {{ tv.title }} <br>
-                Nome originale: {{ tv.origin_title }} <br>
-                Lingua originale: {{ tv.lang }} <img height="20px" :src="tv.flag" alt="" /> <br>
-                Voto: {{ tv.vote }} <br>
-                Poster: <img :src="tv.poster"
-                    :alt="`Poster de: ${tv.origin_title}`" />
+                <CardTvComponent :tv="tv" />
             </li>
         </ul>
     </main>
 </template>
 <script>
 import state from '../store.js'
+import CardMovieComponent from './CardMovieComponent.vue'
+import CardTvComponent from './CardTvComponent.vue'
 
 export default {
     name: 'MainComponent',
@@ -97,6 +90,10 @@ export default {
             })
         }
     },
+    components: {
+        CardMovieComponent,
+        CardTvComponent
+    }
 }
 </script>
 <style lang="scss" scoped>

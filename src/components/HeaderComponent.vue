@@ -1,6 +1,6 @@
 <template>
     <header>
-        <input type="text" placeholder="Cerca un film" v-model="search" />
+        <input type="text" placeholder="Cerca un film" v-model="search" @keyup.enter="getMovies()" />
         <button @click="getMovies()">Cerca</button>
     </header>
 </template>
@@ -53,6 +53,8 @@ export default {
                 .catch((err) => {
                     console.log(err)
                 })
+
+                this.search = ''
         }
     }
 }
