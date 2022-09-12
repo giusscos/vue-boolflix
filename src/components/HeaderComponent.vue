@@ -26,8 +26,8 @@ export default {
     },
     methods: {
         getMovies() {
-            if(this.search.trim() === '')
-                return 
+            if (this.search.trim() === '')
+                return
 
             state.query = this.search
 
@@ -61,44 +61,46 @@ export default {
                     console.log(err)
                 })
 
-                this.search = ''
+            this.search = ''
         }
     }
 }
 </script>
 <style lang="scss" scoped>
-.main_header{
+@import '../style/index.scss';
+
+.main_header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     padding: 0.5rem 1rem;
 
-    background-color: #333;
+    background-color: $bf-bg;
 
-    .logo_wrapper{
-        .logo_title{
-            color: #c10000;
+    .logo_wrapper {
+        .logo_title {
+            color: $bf-accent;
             text-transform: uppercase;
         }
     }
 
-    .search_wrapper{
+    .search_wrapper {
         gap: 1rem;
         display: flex;
         margin-left: auto;
 
-        input[type="text"]{
+        input[type="text"] {
             font-size: 1rem;
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             border: 0px solid transparent;
 
-            &:focus{
-                outline: 2px solid #c10000;
+            &:focus {
+                outline: 2px solid $bf-accent;
             }
         }
 
-        button{
+        button {
             cursor: pointer;
             border-radius: 0.5rem;
             padding: 0.5rem 1.5rem;
@@ -107,12 +109,13 @@ export default {
             font-size: 1rem;
             font-weight: bold;
 
-            &:hover{
+            &:hover {
                 color: #ddd;
-                background-color: #c10000;
+                background-color: $bf-accent;
             }
-            &:focus{
-                outline: 2px solid #c10000;
+
+            &:focus {
+                outline: 2px solid $bf-accent;
             }
         }
     }

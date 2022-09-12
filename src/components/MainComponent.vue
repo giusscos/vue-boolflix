@@ -1,20 +1,10 @@
 <template>
-    <main>
-        <ul>
-            <li>
-                <h3>
-                    Film
-                </h3>
+    <main class="main_content">
+        <ul class="list_wrapper container">
+            <li class="list_item" v-for="movie in movies" :key="movie.id">
+                <CardMovieComponent :movie="movie" />
             </li>
-            <li v-for="movie in movies" :key="movie.id">
-                <CardMovieComponent :movie="movie"/>
-            </li>
-            <li>
-                <h3>
-                    Serie Tv
-                </h3>
-            </li>
-            <li v-for="tv in tvs" :key="tv.id">
+            <li class="list_item" v-for="tv in tvs" :key="tv.id">
                 <CardTvComponent :tv="tv" />
             </li>
         </ul>
@@ -22,13 +12,13 @@
 </template>
 <script>
 import state from '../store.js'
-import CardMovieComponent from './CardMovieComponent.vue'
 import CardTvComponent from './CardTvComponent.vue'
+import CardMovieComponent from './CardMovieComponent.vue'
 
 export default {
     name: 'MainComponent',
-    data(){
-        return{
+    data() {
+        return {
             flag_path: 'https://flagsapi.com/',
             poster_path: 'https://image.tmdb.org/t/p/w342',
         }
@@ -103,5 +93,22 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../style/index.scss';
 
+.main_content {
+    height: 100vh;
+    background-color: $bf-bg_darker;
+    overflow: auto;
+
+    .list_wrapper {
+        padding: 2rem 0.5rem;
+        gap: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+
+        .list_item{
+            flex-basis: calc((100% / 3) - 2rem);
+        }
+    }
+}
 </style>
