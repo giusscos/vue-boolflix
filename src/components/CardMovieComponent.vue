@@ -19,7 +19,7 @@
                 <span v-if="star < movie.vote">
                     <i class="fa-solid fa-star"></i>
                 </span>
-                <span v-else-if="star > tv.vote">
+                <span v-else-if="star > movie.vote">
                     <i class="fa-regular fa-star"></i>
                 </span>
             </span>
