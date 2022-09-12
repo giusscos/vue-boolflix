@@ -1,10 +1,23 @@
 <template>
     <li>
-        Titolo: {{ movie.title }}<br>
-        Titolo originale: {{ movie.origin_title }}<br>
-        Lingua originale: {{ movie.lang }} <img height="20px" :src="movie.flag" alt="" /> <br>
-        Voto: {{ movie.vote }} <br>
-        Poster: <img :src="movie.poster" :alt="`Poster de: ${movie.original_title}`" />
+        <h3>
+            Titolo: {{ movie.title }}
+        </h3>
+        <p>
+            Titolo originale: {{ movie.origin_title }}
+        </p>
+        <p>
+            Lingua originale: {{ movie.lang }} <img height="20px" :src="movie.flag" alt="" /> 
+        </p>
+        <p>
+            Poster: <img :src="movie.poster" :alt="`Poster de: ${movie.original_title}`" />
+        </p>
+        <p>
+            Voto: <!-- {{ movie.vote }}  -->
+            <span v-for="(star,i) in movie.vote" :key="`${i}.star`">
+                <i class="fa-solid fa-star"></i>
+            </span>
+        </p>
     </li>
 </template>
 <script>
