@@ -38,6 +38,7 @@ export default {
                     params: {
                         api_key: this.api_key,
                         query: state.query,
+                        language: 'it'
                     }
                 })
                 .then((res) => {
