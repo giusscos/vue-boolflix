@@ -23,7 +23,8 @@ img{
 // Card
 .card_wrapper {
     position: relative;
-
+    height: 100%;
+    
     &:hover {
         .card_info {
             opacity: 1;
@@ -40,20 +41,35 @@ img{
         
         opacity: 0;
         padding: 1rem;
+        overflow: auto;
+        font-weight: bold;
         color: $bf-text_white;
-        background-color: $bf-bg_alternative;
         transition: 300ms ease-in-out;
+        background-color: $bf-bg_alternative;
         
+        gap: 1rem;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+
+        .card_content{
+            font-weight: normal;
+            font-size: 1rem;
+        }
 
         .card_vote{
+
             .vote_average{
                 color: yellow;
             }
             .vote{
                 color: $bf-bg_darker;
+            }
+        }
+
+        .card_overview{
+
+            span{
+                font-weight: normal;
             }
         }
     }

@@ -5,13 +5,22 @@
         </div>
         <div class="card_info">
             <h3>
-                {{ tv.title }}
+                Titolo:
+                <span>
+                    {{ tv.title }}
+                </span>
             </h3>
             <p>
-                {{ tv.origin_title }}
+                Titolo originale: 
+                <span>
+                    {{ tv.origin_title }}
+                </span>
             </p>
             <p>
-                {{ tv.lang }} <img height="20px" :src="tv.flag" alt="" />
+                Lingua:
+                <span>
+                    {{ tv.lang }} <img height="20px" :src="tv.flag" alt="" />
+                </span>
             </p>
             <p class="card_vote">
                 Voto:
@@ -23,6 +32,12 @@
                     <span v-else-if="star > tv.vote">
                         <i class="fa-regular fa-star"></i>
                     </span>
+                </span>
+            </p>
+            <p class="card_overview">
+                Overview:
+                <span>
+                    {{ tv.overview}}
                 </span>
             </p>
         </div>

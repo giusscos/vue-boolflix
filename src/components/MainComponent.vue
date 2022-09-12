@@ -66,6 +66,7 @@ export default {
                     flag: `${this.flag_path}${el.original_language.toUpperCase()}/flat/64.png`,
                     poster: this.poster_path + el.poster_path,
                     vote: Math.floor(el.vote_average / 2),
+                    overview: el.overview,
                 }
 
                 return movie
@@ -80,6 +81,7 @@ export default {
                     flag: `${this.flag_path}${el.original_language.toUpperCase()}/flat/64.png`,
                     poster: this.poster_path + el.poster_path,
                     vote: Math.floor(el.vote_average / 2),
+                    overview: el.overview,
                 }
 
                 return movie
@@ -101,13 +103,15 @@ export default {
     overflow: auto;
 
     .list_wrapper {
-        padding: 2rem 0.5rem;
         gap: 1rem;
         display: flex;
         flex-wrap: wrap;
+        padding: 2rem 0.5rem;
+
+        color: $bf-text_white;
 
         .list_item{
-            flex-basis: calc((100% / 3) - 2rem);
+            flex-basis: calc((100% / 4) - 1rem);
         }
     }
 }

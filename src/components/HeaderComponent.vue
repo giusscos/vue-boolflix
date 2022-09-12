@@ -26,8 +26,10 @@ export default {
     },
     methods: {
         getMovies() {
-            if (this.search.trim() === '')
+            if (this.search.trim() === ''){
+                this.search = ''
                 return
+            }
 
             state.query = this.search
 

@@ -1,17 +1,26 @@
 <template>
     <div class="card_wrapper">
         <div class="poster">
-            <img :src="movie.poster" :alt="`Poster de: ${movie.original_title}`" />
+            <img :src="movie.poster" :alt="`Poster de: ${movie.origin_title}`" />
         </div>
         <div class="card_info">
             <h3>
-                {{ movie.title }}
+                Titolo:
+                <span class="card_content">
+                    {{ movie.title }}
+                </span>
             </h3>
             <p>
-                {{ movie.origin_title }}
+                Titolo originale: 
+                <span class="card_content">
+                    {{ movie.origin_title }}
+                </span>
             </p>
             <p>
-                {{ movie.lang }} <img height="20px" :src="movie.flag" alt="" />
+                Lingua: 
+                <span class="card_content">
+                    {{ movie.lang }} <img height="20px" :src="movie.flag" alt="" />
+                </span>
             </p>
             <p class="card_vote">
                 Voto:
@@ -23,6 +32,12 @@
                     <span class="vote" v-else-if="star > movie.vote">
                         <i class="fa-regular fa-star"></i>
                     </span>
+                </span>
+            </p>
+            <p class="card_overview">
+                Overview:
+                <span class="card_content">
+                    {{ movie.overview}}
                 </span>
             </p>
         </div>
