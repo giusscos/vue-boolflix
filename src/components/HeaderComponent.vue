@@ -54,6 +54,7 @@ export default {
                     params: {
                         api_key: this.api_key,
                         query: state.query,
+                        language: 'it',
                     }
                 })
                 .then((res) => {
@@ -63,6 +64,19 @@ export default {
                 .catch((err) => {
                     console.log(err)
                 })
+
+            // axios
+            //     .get(`${this.base_tmdb_uri}/search/person`, {
+            //         params: {
+            //             api_key: this.api_key,
+            //             query: state.query, 
+            //             language: 'it'
+            //         }
+            //     })
+            //     .then((res) =>{
+            //         console.log(res.data.results)
+            //         state.listPeople = res.data.results
+            //     })
 
             this.search = ''
         }

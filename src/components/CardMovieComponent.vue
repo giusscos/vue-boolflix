@@ -27,10 +27,10 @@
                 <!-- {{ movie.vote }}  -->
                 <span v-for="star in 5" :key="`${star}.star`">
                     <span class="vote_average" v-if="star <= movie.vote">
-                        <i class="fa-solid fa-star"></i>
+                        <font-awesome-icon icon="fa-solid fa-star" />
                     </span>
                     <span class="vote" v-else-if="star > movie.vote">
-                        <i class="fa-regular fa-star"></i>
+                        <font-awesome-icon icon="fa-regular fa-star" />
                     </span>
                 </span>
             </p>

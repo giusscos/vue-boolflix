@@ -24,7 +24,6 @@
                     </span>
                     <span v-else>
                         <img height="20px" :src="tv.flag.default" :alt="`${tv.lang}`" />
-
                     </span>
                 </span>
             </p>
@@ -33,10 +32,10 @@
                 <!-- {{ tv.vote }} -->
                 <span v-for="star in 5" :key="`${star}.star`">
                     <span class="vote_average" v-if="star <= tv.vote">
-                        <i class="fa-solid fa-star"></i>
+                        <font-awesome-icon icon="fa-solid fa-star" />
                     </span>
                     <span class="vote" v-else-if="star > tv.vote">
-                        <i class="fa-regular fa-star"></i>
+                        <font-awesome-icon icon="fa-regular fa-star" />
                     </span>
                 </span>
             </p>

@@ -2,7 +2,7 @@
     <main class="main_content">
         <ul class="list_wrapper container">
             <li class="list_item" v-for="movie in movies" :key="movie.id">
-                <CardMovieComponent :movie="movie" />
+                <CardMovieComponent :movie="movie"/>
             </li>
             <li class="list_item" v-for="tv in tvs" :key="tv.id">
                 <CardTvComponent :tv="tv" />
@@ -33,8 +33,11 @@ export default {
         listTvs() {
             return state.listTvs
         },
+        // listPeople(){
+        //     return state.listPeople.know_for
+        // },
         movieFilter() {
-            return state.listMovies.filter((el) => {
+            return this.listMovies.filter((el) => {
                 const title = el.title.toLowerCase()
                 const findMovie = this.search.toLowerCase()
 
@@ -46,7 +49,7 @@ export default {
             })
         },
         tvsFilter() {
-            return state.listTvs.filter((el) => {
+            return this.listTvs.filter((el) => {
                 const title = el.name.toLowerCase()
                 const findTv = this.search.toLowerCase()
 
@@ -57,6 +60,19 @@ export default {
                 return false
             })
         },
+        // peopleFilter(){
+        //     return this.listPeople.filter((el) => {
+        //         const name = el.title.toLowerCase()
+        //         const findPerson = this.search.toLowerCase()
+
+        //         if(name.includes(findPerson)){
+        //             console.log(name)
+        //             return true
+        //         }
+
+        //         return false
+        //     })
+        // },  
         movies() {
             return this.movieFilter.map((el) => {
                 const movie = {

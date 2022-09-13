@@ -3,7 +3,8 @@ import Vue from "vue";
 const state = Vue.observable({
     query: '',
     listMovies: [],
-    listTvs: []
+    listTvs: [],
+    listPeople: []
 })
 
 export default state
