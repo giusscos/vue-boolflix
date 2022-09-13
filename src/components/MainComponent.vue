@@ -84,7 +84,7 @@ export default {
                     origin_title: el.original_title,
                     lang: el.original_language,
                     flag: this.flags[el.original_language],
-                    poster: this.poster_path + el.poster_path,
+                    poster: el.poster_path ? this.poster_path + el.poster_path : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fedutech4teachers.edublogs.org%2Ffiles%2F2017%2F02%2FIMG_0628-zcvmln-1024x1024.png&f=1&nofb=1',
                     vote: Math.floor(el.vote_average / 2),
                     overview: el.overview,
                 }
@@ -99,7 +99,7 @@ export default {
                     origin_title: el.original_name,
                     lang: el.original_language,
                     flag: this.flags[el.original_language],
-                    poster: this.poster_path + el.poster_path,
+                    poster: el.poster_path ? this.poster_path + el.poster_path : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fedutech4teachers.edublogs.org%2Ffiles%2F2017%2F02%2FIMG_0628-zcvmln-1024x1024.png&f=1&nofb=1',
                     vote: Math.floor(el.vote_average / 2),
                     overview: el.overview,
                 }
