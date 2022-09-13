@@ -26,6 +26,9 @@ export default {
             poster_path: 'https://image.tmdb.org/t/p/w342',
         }
     },
+    components: {
+        CardComponent
+    },
     computed: {
         search() {
             return state.query
@@ -35,9 +38,6 @@ export default {
         },
         listTvs() {
             return state.listTvs
-        },
-        listPeople(){
-            return state.listPeople.know_for
         },
         movieFilter() {
             return this.listMovies.filter((el) => {
@@ -93,9 +93,6 @@ export default {
                 return movie
             })
         }
-    },
-    components: {
-        CardComponent
     }
 }
 </script>

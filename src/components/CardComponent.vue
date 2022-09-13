@@ -40,12 +40,6 @@
                     {{ el.overview}}
                 </span>
             </p>
-            <p class="card_people">
-                Cast:
-                <span class="card_content">
-                    
-                </span>
-            </p>
         </div>
     </div>
 </template>
