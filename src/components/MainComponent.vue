@@ -18,7 +18,6 @@ export default {
     name: 'MainComponent',
     data() {
         return {
-            flag_path: 'https://flagsapi.com/',
             flags: {
                 it: 'https://flagsapi.com/IT/flat/64',
                 en: 'https://flagsapi.com/GB/flat/64',
@@ -37,9 +36,9 @@ export default {
         listTvs() {
             return state.listTvs
         },
-        // listPeople(){
-        //     return state.listPeople.know_for
-        // },
+        listPeople(){
+            return state.listPeople.know_for
+        },
         movieFilter() {
             return this.listMovies.filter((el) => {
                 const title = el.title.toLowerCase()
@@ -64,19 +63,6 @@ export default {
                 return false
             })
         },
-        // peopleFilter(){
-        //     return this.listPeople.filter((el) => {
-        //         const name = el.title.toLowerCase()
-        //         const findPerson = this.search.toLowerCase()
-
-        //         if(name.includes(findPerson)){
-        //             console.log(name)
-        //             return true
-        //         }
-
-        //         return false
-        //     })
-        // },  
         movies() {
             return this.movieFilter.map((el) => {
                 const movie = {
