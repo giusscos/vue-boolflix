@@ -1,31 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 @import './vars.scss';
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html{
+
+html {
     font-family: 'Montserrat', sans-serif;
 }
+
 // Default Rules
-ul{
+ul {
     list-style: none;
 }
-img{
+
+img {
     max-width: 100%;
 }
+
 // Layout
-.container{
+.container {
     padding: 1rem 0;
     margin: 0 auto;
     max-width: 900px;
 }
+
 // Card
 .card_wrapper {
     position: relative;
     height: 100%;
-    
+
     &:hover {
         .card_info {
             opacity: 1;
@@ -39,7 +45,7 @@ img{
         left: 0;
         right: 0;
         bottom: 0;
-        
+
         opacity: 0;
         padding: 1rem;
         overflow: auto;
@@ -47,31 +53,38 @@ img{
         color: $bf-text_white;
         transition: 300ms ease-in-out;
         background-color: $bf-bg_alternative;
-        
+
         gap: 1rem;
         display: flex;
         flex-direction: column;
 
-        .card_content{
+        h3 {
+            .card_content {
+                vertical-align: middle;
+            }
+        }
+
+        .card_content {
             font-size: 1rem;
             font-weight: normal;
 
             vertical-align: top;
         }
 
-        .card_vote{
+        .card_vote {
 
-            .vote_average{
-                color: yellow;
+            .vote_average {
+                color: $bf-star;
             }
-            .vote{
+
+            .vote {
                 color: $bf-bg_darker;
             }
         }
 
-        .card_overview{
+        .card_overview {
 
-            span{
+            span {
                 font-weight: normal;
             }
         }

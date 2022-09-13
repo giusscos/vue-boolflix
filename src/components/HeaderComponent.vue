@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         getMovies() {
-            if (this.search.trim() === ''){
+            if (this.search.trim() === '') {
                 this.search = ''
                 return
             }
@@ -66,7 +66,7 @@ export default {
                 })
 
             this.search = ''
-        }
+        },
     }
 }
 </script>
