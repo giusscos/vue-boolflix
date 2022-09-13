@@ -1,13 +1,23 @@
 <template>
     <main class="main_content">
-        <ul class="list_wrapper container">
-            <li class="list_item" v-for="movie in movies" :key="movie.id">
-                <CardComponent :el="movie"/>
-            </li>
-            <li class="list_item" v-for="tv in tvs" :key="tv.id">
-                <CardComponent :el="tv" />
-            </li>
-        </ul>
+        <div class="container">
+            <h3>
+                Film
+            </h3>
+            <ul class="list_wrapper">
+                <li class="list_item" v-for="movie in movies" :key="movie.id">
+                    <CardComponent :el="movie"/>
+                </li>
+            </ul>
+            <h3>
+                Serie Tv
+            </h3>
+            <ul class="list_wrapper">
+                <li class="list_item" v-for="tv in tvs" :key="tv.id">
+                    <CardComponent :el="tv" />
+                </li>
+            </ul>
+        </div>
     </main>
 </template>
 <script>
@@ -103,6 +113,10 @@ export default {
     height: 100vh;
     background-color: $bf-bg_darker;
     overflow: auto;
+
+    h3{
+        color: $bf-text_white;
+    }
 
     .list_wrapper {
         gap: 1rem;

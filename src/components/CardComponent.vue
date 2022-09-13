@@ -18,8 +18,13 @@
             </p>
             <p>
                 Lingua:
-                <span class="card_content">
+                <span class="card_content" v-if="el.flag">
                     <img height="20px" :src="el.flag" :alt="`${el.lang}`" />
+                </span>
+                <span class="card_content" v-else>
+                    <span>
+                        {{ el.lang }}
+                    </span>
                 </span>
             </p>
             <p class="card_vote">
