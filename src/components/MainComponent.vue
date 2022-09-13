@@ -2,24 +2,28 @@
     <main class="main_content">
         <ul class="list_wrapper container">
             <li class="list_item" v-for="movie in movies" :key="movie.id">
-                <CardMovieComponent :movie="movie"/>
+                <CardComponent :el="movie"/>
             </li>
             <li class="list_item" v-for="tv in tvs" :key="tv.id">
-                <CardTvComponent :tv="tv" />
+                <CardComponent :el="tv" />
             </li>
         </ul>
     </main>
 </template>
 <script>
 import state from '../store.js'
-import CardTvComponent from './CardTvComponent.vue'
-import CardMovieComponent from './CardMovieComponent.vue'
+import CardComponent from './CardComponent.vue'
 
 export default {
     name: 'MainComponent',
     data() {
         return {
             flag_path: 'https://flagsapi.com/',
+            flags: {
+                it: 'https://flagsapi.com/IT/flat/64',
+                en: 'https://flagsapi.com/GB/flat/64',
+                de: 'https://flagsapi.com/DE/flat/64',
+            },
             poster_path: 'https://image.tmdb.org/t/p/w342',
         }
     },
@@ -79,7 +83,7 @@ export default {
                     title: el.title,
                     origin_title: el.original_title,
                     lang: el.original_language,
-                    flag: `${this.flag_path}${el.original_language.toUpperCase()}/flat/64.png`,
+                    flag: this.flags[el.original_language],
                     poster: this.poster_path + el.poster_path,
                     vote: Math.floor(el.vote_average / 2),
                     overview: el.overview,
@@ -94,7 +98,7 @@ export default {
                     title: el.name,
                     origin_title: el.original_name,
                     lang: el.original_language,
-                    flag: `${this.flag_path}${el.original_language.toUpperCase()}/flat/64.png`,
+                    flag: this.flags[el.original_language],
                     poster: this.poster_path + el.poster_path,
                     vote: Math.floor(el.vote_average / 2),
                     overview: el.overview,
@@ -105,8 +109,7 @@ export default {
         }
     },
     components: {
-        CardMovieComponent,
-        CardTvComponent
+        CardComponent
     }
 }
 </script>

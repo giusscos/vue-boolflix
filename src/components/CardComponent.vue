@@ -1,40 +1,35 @@
 <template>
     <div class="card_wrapper">
         <div class="poster">
-            <img :src="tv.poster" :alt="`Poster de: ${tv.origin_title}`" />
+            <img :src="el.poster" :alt="`Poster de: ${el.origin_title}`" />
         </div>
         <div class="card_info">
             <h3>
                 Titolo:
                 <span class="card_content">
-                    {{ tv.title }}
+                    {{ el.title }}
                 </span>
             </h3>
             <p>
                 Titolo originale:
                 <span class="card_content">
-                    {{ tv.origin_title }}
+                    {{ el.origin_title }}
                 </span>
             </p>
             <p>
                 Lingua:
                 <span class="card_content">
-                    <span v-if="tv.flag">
-                        <img height="20px" :src="tv.flag.src" :alt="`${tv.lang}`" />
-                    </span>
-                    <span v-else>
-                        <img height="20px" :src="tv.flag.default" :alt="`${tv.lang}`" />
-                    </span>
+                    <img height="20px" :src="el.flag" :alt="`${el.lang}`" />
                 </span>
             </p>
             <p class="card_vote">
                 Voto:
-                <!-- {{ tv.vote }} -->
+                <!-- {{ el.vote }} -->
                 <span v-for="star in 5" :key="`${star}.star`">
-                    <span class="vote_average" v-if="star <= tv.vote">
+                    <span class="vote_average" v-if="star <= el.vote">
                         <font-awesome-icon icon="fa-solid fa-star" />
                     </span>
-                    <span class="vote" v-else-if="star > tv.vote">
+                    <span class="vote" v-else-if="star > el.vote">
                         <font-awesome-icon icon="fa-regular fa-star" />
                     </span>
                 </span>
@@ -42,7 +37,7 @@
             <p class="card_overview">
                 Overview:
                 <span class="card_content">
-                    {{ tv.overview}}
+                    {{ el.overview}}
                 </span>
             </p>
         </div>
@@ -50,9 +45,9 @@
 </template>
 <script>
 export default {
-    name: 'CardTvComponent',
+    name: 'CardComponent',
     props: {
-        tv: {
+        el: {
             type: Object,
             required: true
         }
