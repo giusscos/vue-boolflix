@@ -76,6 +76,7 @@ export default {
         movies() {
             return this.movieFilter.map((el) => {
                 const movie = {
+                    id: el.id,
                     title: el.title,
                     origin_title: el.original_title,
                     lang: el.original_language,
@@ -91,6 +92,7 @@ export default {
         tvs() {
             return this.tvsFilter.map((el) => {
                 const movie = {
+                    id: el.id,
                     title: el.name,
                     origin_title: el.original_name,
                     lang: el.original_language,

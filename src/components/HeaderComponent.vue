@@ -42,7 +42,7 @@ export default {
                     }
                 })
                 .then((res) => {
-                    console.log(res.data.results)
+                    // console.log(res.data.results)
                     state.listMovies = res.data.results
                 })
                 .catch((err) => {
@@ -58,7 +58,7 @@ export default {
                     }
                 })
                 .then((res) => {
-                    console.log(res.data.results)
+                    // console.log(res.data.results)
                     state.listTvs = res.data.results
                 })
                 .catch((err) => {
