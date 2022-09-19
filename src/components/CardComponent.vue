@@ -51,6 +51,12 @@
                     {{ cast.original_name }};
                 </li>
             </ul>
+            <ul class="card_genre">
+                Genere:
+                <li class="card_content" v-for="(genre, i) in genreFilter" :key="`${i}gen`">
+                    {{ genre.name }};
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -70,7 +76,8 @@ export default {
             search: '',
             base_tmdb_uri: 'https://api.themoviedb.org/3',
             api_key: '4d27808e8194023af7e00188b1d397e2',
-            listCast: []
+            listCast: [],
+            listGenres: [],
         }
     },
     mounted() {
@@ -88,16 +95,40 @@ export default {
             .catch((err) => {
                 console.log(err)
             })
+        axios
+            .get(`${this.base_tmdb_uri}/movie/${this.el.id}`, {
+                params: {
+                    api_key: this.api_key,
+                    language: 'it'
+                }
+            })
+            .then((res) => {
+                this.listGenres = res.data.genres
+                // console.log(this.listGenres)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
 
     },
     computed: {
         castFilter() {
             const people = []
-            for (let i = 0; i < 5; i++) {
-                if (this.listCast.length >= 5)
+            if (this.listCast.length >= 5) {
+                for (let i = 0; i < 5; i++) {
                     people.push(this.listCast[i])
+                }
             }
             return people
+        },
+        genreFilter() {
+            const genres = []
+            if (this.listGenres) {
+                for (let i = 0; i < this.listGenres.length; i++) {
+                    genres.push(this.listGenres[i])
+                }
+            }
+            return genres
         }
     }
 }
