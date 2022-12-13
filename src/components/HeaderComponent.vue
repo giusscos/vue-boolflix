@@ -9,6 +9,14 @@
             <input type="text" placeholder="Cerca un film" v-model="search" @keyup.enter="getMovies()" />
             <button @click="getMovies()">Cerca</button>
         </div>
+        <div class="filter_wrapper">
+            <ul class="filter_list">
+                <li class="list_item capitalize" v-for="(genre, i) in getGenre" :key="`${i}filter`"
+                    @click="setGenre(genre.name)">
+                    {{ genre.name }}
+                </li>
+            </ul>
+        </div>
     </header>
 </template>
 <script>
@@ -67,6 +75,64 @@ export default {
 
             this.search = ''
         },
+        setGenre(data) {
+            // console.log(data)
+            state.genreQuery = data
+
+            axios
+                .get(`${this.base_tmdb_uri}/discover/movie`, {
+                    params: {
+                        api_key: this.api_key,
+                        whit_genres: state.genreQuery,
+                        language: 'it'
+                    }
+                })
+                .then((res) => {
+                    console.log(res.data.results)
+                    state.listMovies = res.data.results
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+
+            axios
+                .get(`${this.base_tmdb_uri}/discover/tv`, {
+                    params: {
+                        api_key: this.api_key,
+                        whit_genres: state.genreQuery,
+                        language: 'it'
+                    }
+                })
+                .then((res) => {
+                    console.log(res.data.results)
+                    state.listTvs = res.data.results
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+            state.genreQuery = ''
+        }
+    },
+    mounted() {
+        axios
+            .get(`${this.base_tmdb_uri}/genre/movie/list`, {
+                params: {
+                    api_key: this.api_key,
+                    language: 'it'
+                }
+            })
+            .then((res) => {
+                // console.log(res.data.genres)
+                state.listGenre = res.data.genres
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    },
+    computed: {
+        getGenre() {
+            return state.listGenre
+        }
     }
 }
 </script>
@@ -75,6 +141,7 @@ export default {
 
 .main_header {
     display: flex;
+    gap: 1.5rem;
     flex-wrap: wrap;
     align-items: center;
     padding: 0.5rem 1rem;
@@ -120,6 +187,29 @@ export default {
 
             &:focus {
                 outline: 2px solid $bf-accent;
+            }
+        }
+    }
+
+    .filter_wrapper {
+        flex-basis: 100%;
+
+        .filter_list {
+            gap: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            color: $bf-text_white;
+
+            .list_item {
+                cursor: pointer;
+                opacity: 0.7;
+                transition: 200ms ease-in-out;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
     }

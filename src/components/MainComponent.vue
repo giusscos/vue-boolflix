@@ -43,6 +43,9 @@ export default {
         search() {
             return state.query
         },
+        selectGenre(){
+            return state.genreQuery
+        },
         listMovies() {
             return state.listMovies
         },
