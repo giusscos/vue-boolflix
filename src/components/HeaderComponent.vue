@@ -11,8 +11,11 @@
         </div>
         <div class="filter_wrapper">
             <ul class="filter_list">
-                <li class="list_item capitalize" v-for="(genre, i) in getGenre" :key="`${i}filter`"
-                    @click="setGenre(genre.name)">
+                <li v-for="(genre, i) in getGenre" :key="`${i}filter`" 
+                :class="{
+                    'list_item capitalize': true,
+                    'evidence': getQuery.includes(genre.id),
+                }" @click="addGenre(genre.id)">
                     {{ genre.name }}
                 </li>
             </ul>
@@ -53,9 +56,9 @@ export default {
                     // console.log(res.data.results)
                     state.listMovies = res.data.results
                 })
-                .catch((err) => {
-                    console.log(err)
-                })
+            .catch((err) => {
+                console.log(err)
+            })
 
             axios
                 .get(`${this.base_tmdb_uri}/search/tv`, {
@@ -69,48 +72,17 @@ export default {
                     // console.log(res.data.results)
                     state.listTvs = res.data.results
                 })
-                .catch((err) => {
-                    console.log(err)
-                })
+            .catch((err) => {
+                console.log(err)
+            })
 
             this.search = ''
+            state.genreQuery = new Array
         },
-        setGenre(data) {
-            // console.log(data)
-            state.genreQuery = data
-
-            axios
-                .get(`${this.base_tmdb_uri}/discover/movie`, {
-                    params: {
-                        api_key: this.api_key,
-                        whit_genres: state.genreQuery,
-                        language: 'it'
-                    }
-                })
-                .then((res) => {
-                    console.log(res.data.results)
-                    state.listMovies = res.data.results
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-
-            axios
-                .get(`${this.base_tmdb_uri}/discover/tv`, {
-                    params: {
-                        api_key: this.api_key,
-                        whit_genres: state.genreQuery,
-                        language: 'it'
-                    }
-                })
-                .then((res) => {
-                    console.log(res.data.results)
-                    state.listTvs = res.data.results
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-            state.genreQuery = ''
+        addGenre(data) {
+            if (!state.genreQuery.includes(data)) {
+                state.genreQuery.push(data)
+            }
         }
     },
     mounted() {
@@ -122,7 +94,6 @@ export default {
                 }
             })
             .then((res) => {
-                // console.log(res.data.genres)
                 state.listGenre = res.data.genres
             })
             .catch((err) => {
@@ -132,6 +103,9 @@ export default {
     computed: {
         getGenre() {
             return state.listGenre
+        },
+        getQuery() {
+            return state.genreQuery
         }
     }
 }
@@ -193,7 +167,7 @@ export default {
 
     .filter_wrapper {
         flex-basis: 100%;
-
+        padding: 0 0 1rem;
         .filter_list {
             gap: 1.5rem;
             display: flex;
@@ -207,7 +181,8 @@ export default {
                 opacity: 0.7;
                 transition: 200ms ease-in-out;
 
-                &:hover {
+                &:hover,
+                &.evidence {
                     opacity: 1;
                 }
             }

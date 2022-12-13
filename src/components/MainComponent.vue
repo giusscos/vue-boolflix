@@ -39,6 +39,16 @@ export default {
     components: {
         CardComponent
     },
+    methods: {
+        arrayContains(a, s) {
+            for (var i = 0, l = s.length; i < l; i++) {
+                if (!~a.indexOf(s[i])) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    },
     computed: {
         search() {
             return state.query
@@ -54,10 +64,14 @@ export default {
         },
         movieFilter() {
             return this.listMovies.filter((el) => {
+                // console.log(el)
+                
                 const title = el.title.toLowerCase()
                 const findMovie = this.search.toLowerCase()
+                const genres = el.genre_ids;
+                // console.log(genres)
 
-                if (title.includes(findMovie)) {
+                if (title.includes(findMovie) && this.arrayContains(genres ,this.selectGenre)) {
                     return true
                 }
 
@@ -66,10 +80,12 @@ export default {
         },
         tvsFilter() {
             return this.listTvs.filter((el) => {
+                // console.log(el)
                 const title = el.name.toLowerCase()
                 const findTv = this.search.toLowerCase()
+                const genres = el.genre_ids;
 
-                if (title.includes(findTv)) {
+                if (title.includes(findTv) && this.arrayContains(genres ,this.selectGenre)) {
                     return true
                 }
 

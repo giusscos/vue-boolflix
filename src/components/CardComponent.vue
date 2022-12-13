@@ -92,9 +92,9 @@ export default {
                 // console.log(res.data.cast)
                 this.listCast = res.data.cast
             })
-            .catch((err) => {
-                console.log(err)
-            })
+            // .catch((err) => {
+            //     console.log(err)
+            // })
         axios
             .get(`${this.base_tmdb_uri}/movie/${this.el.id}`, {
                 params: {
@@ -106,9 +106,9 @@ export default {
                 this.listGenres = res.data.genres
                 // console.log(this.listGenres)
             })
-            .catch((err) => {
-                console.log(err)
-            })
+            // .catch((err) => {
+            //     console.log(err)
+            // })
 
     },
     computed: {
